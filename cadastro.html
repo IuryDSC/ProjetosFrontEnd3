@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Sabor 2024</title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+    </nav>
+    <h1>Formulario de Cadastro</h1>
+    <form id="cadastroForm" action="submit_form.php" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="dataNascimento">Data de Nascimento:</label>
+        <input type="date" id="dataNascimento" name="dataNascimento" required>
+
+        <label for="residencia">Residência:</label>
+        <input type="text" id="residencia" name="residencia" required>
+
+        <label for="preferencias">Preferências de Alimentação:</label>
+        <select id="preferencias" name="preferencias" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="vegana">Vegana</option>
+            <option value="vegetariana">Vegetariana</option>
+            <option value="outra">Outra</option>
+        </select>
+
+        <div class="buttons">
+            <button type="submit" class="save">Salvar</button>
+            <button type="reset" class="clear">Limpar</button>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById('cadastroForm').onsubmit = function() {
+            let formValid = true;
+
+            const inputs = document.querySelectorAll('input[required], select[required]');
+            inputs.forEach(input => {
+                if (!input.value) {
+                    formValid = false;
+                    alert(`Por favor, preencha o campo ${input.previousElementSibling.innerText}`);
+                }
+            });
+
+            return formValid;
+        };
+    </script>
+</body>
+</html>
